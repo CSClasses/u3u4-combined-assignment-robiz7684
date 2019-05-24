@@ -5,12 +5,14 @@
 *Takes in an array of unknown size of various integers and doubles, and sorts them into positive integers, positive doubles, and all negatives.
 */
 
+//It works when testing with a loop of 10 and only entering numbers, but it constantly gave me errors when trying to make it infinite/an unknown size. Also couldn't get anything to work that ensures you can only enter numbers.
+
+
 //Variables
 var aInput = [String]() //The input array is a string so it can hold all the types of input
 var arrayPosI = [Int]() //array for positive integers
 var arrayPosD = [Double]() //array for positive doubles
 var arrayNeg = [String]() //array for negative numbers
-var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 var input: String
 var xI = 0 //placeholer for integers
 var xD = 0.0 //palceholder for doubles
@@ -18,25 +20,22 @@ var loop = 1
 var nums = 0
 var t = 0
 
-print("Please enter a series of integers and/or decimals, enter \"break\" when done:")
+print("Please enter a series of integers and/or decimals:") //, enter \"break\" when done:")
 
 //infinte loop so that the user can enter as many numbers as they want
-while loop > 0 {
+//while loop > 0 {
+  for _ in 1...10 {
   input = readLine()!
   if input.lowercased() == "break" { //allows the user to leave the loop
     break
   }
-  /*if letters.contains(input) {
-    print ("stop")
-  }*/
   aInput.append(input)
-  /*print("\(aInput[t])")
-  t += 1*/
 }
 
 //Seperates the input array into the 3 other arrays
-for num in aInput {
-  nums = ((Int(num)!) - 1)
+//for num in aInput {
+  for num in 1...10 {
+  nums = num - 1
   if aInput[nums].contains("-") { //filters for all negatives   split into doubles and integers and then sort and then combine them into one array
     //xI = Int(aInput[y2])! //converts the input array into the integer for the 
     arrayNeg.append(aInput[nums])
@@ -52,7 +51,7 @@ for num in aInput {
 //Sorting the final arrays
 arrayPosI.sort()
 arrayPosD.sort()
-arrayNeg.sort()
+arrayNeg.sort() //Doesn't really work as it is a String array
 
 print ("\n\nAll the positive integers are: \(arrayPosI)")
 print ("All the positive decimals are: \(arrayPosD)")
